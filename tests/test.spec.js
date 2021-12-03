@@ -162,7 +162,7 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe("EJERCICIO 6: OrderedLinkedList metodo removeLower", function(){
-        xit("debe retirar los nodos mas chicos de la OrderedLinkedList", function(){
+        it("debe retirar los nodos mas chicos de la OrderedLinkedList", function(){
             let ll = new OrderedLinkedList()
             ll.head = new Node(5)
             ll.head.next = new Node(4)
@@ -172,7 +172,7 @@ describe('Practica del Checkpoint M1', function(){
             expect(ll.removeLower()).to.be.equal(5)
             expect(ll.head).to.be.equal(null)
         })
-        xit("si la OrderedLinkedList esta vacia debe retornar null", function(){
+        it("si la OrderedLinkedList esta vacia debe retornar null", function(){
             let ll = new OrderedLinkedList()
             expect(ll.removeLower()).to.be.equal(null)
             expect(ll.removeLower()).to.be.equal(null)

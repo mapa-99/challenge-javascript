@@ -235,12 +235,24 @@ OrderedLinkedList.prototype.removeHigher = function () {
 
 OrderedLinkedList.prototype.removeLower = function () {
   var actual = this.head;
-  if (!this.head) return null;
+  var ultimo = actual;
+  if (!this.head) {
+    return null;
+  }
   if (!actual.next) {
     //Cuando la lista tiene un solo elemento
     this.head = null;
     return actual.value;
   }
+  //Cuando la lista cuenta con más de un elemento
+  while (actual.next) {
+    //Se hace el ciclo para hallar el último valor
+    ultimo = ultimo.next;
+    if (ultimo.next) actual = actual.next;
+    else actual.next= null;
+  }
+  actual.next = null;
+  return ultimo.value;
 };
 
 // ----- QUEUE -----
