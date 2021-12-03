@@ -204,7 +204,19 @@ OrderedLinkedList.prototype.add = function (val) {
 // > LL.removeHigher()
 // < null
 
-OrderedLinkedList.prototype.removeHigher = function () {};
+OrderedLinkedList.prototype.removeHigher = function () {
+  var actual = this.head;
+  if (!this.head) return null;
+  if (!actual.next) {
+    //Cuando la lista tiene un solo elemento
+    this.head = null;
+    return actual.value;
+  }
+  //Como está organizada de forma ascendente,
+  // el mayor siempre estará de primero en la cabecera
+  this.head = actual.next;
+  return actual.value;
+};
 
 // EJERCICIO 6
 // Crea el metodo 'removeLower' que deve devolver el valor mas bajo de la linked list
