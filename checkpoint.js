@@ -127,7 +127,44 @@ OrderedLinkedList.prototype.print = function () {
 // > LL.print()
 // < 'head --> 5 --> 3 --> 1 --> null'
 //               4
-OrderedLinkedList.prototype.add = function (val) {};
+OrderedLinkedList.prototype.add = function (val) {
+  var nuevoNodo = new Node(val);
+  if (!this.head) {
+    this.head = nuevoNodo;
+    //Si la lista está vacía (cabecera apuntando a vacío), el nuevo nodo es la cabecera
+    //return nuevoNodo
+  }
+  if (val > this.head.value) {
+    //Si ya hay un valor, se valida que el valor del nuevo nodo sea mayor que el de la cabecera
+    //convirtiendo el nuevo nodo en cabecera y la cabecera en el siguiente nodo
+    nuevoNodo.next = this.head;
+    //return this.head= nuevoNodo
+  }
+  var actual = this.head;
+  while (actual.next && val < actual.next.value) {
+    //Se hace un bucle encontrando valores de los nodos mayores al valor del nuevo
+    actual = actual.next;
+  }
+  var aux = actual.next; //Se guarda el nodo siguiente en una variable auxiliar para hacer el cambio
+  actual.next = nuevoNodo;
+  nuevoNodo.next = aux;
+  //return nuevoNodo
+
+  // var nuevoNodo = new Node(val);
+  // var actual = this.head;
+  // var auxiliar = null;
+  // if (!this.head || this.head.value < val) {
+  //   //Se valida si la lista está vacía para agregar el primer valor
+  //   nuevoNodo.next = this.head;
+  //   this.head = nuevoNodo;
+  // } else {
+  //   while (actual.next && actual.next.value < val) {
+  //     actual = actual.next;
+  //   }
+  //   nuevoNodo.next = actual.next;
+  //   actual.next = nuevoNodo;
+  // }
+};
 
 // EJERCICIO 5
 // Crea el metodo 'removeHigher' que deve devolver el valor mas alto de la linked list
@@ -209,6 +246,7 @@ BinarySearchTree.prototype.toArray = function () {
   var arr = [];
   // método organizar in order
   this.depthFirstForEach(cb, "in-order");
+  return arr;
 };
 
 // ----- Algoritmos -----
