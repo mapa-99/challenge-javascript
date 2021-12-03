@@ -91,25 +91,25 @@ describe('Practica del Checkpoint M1', function(){
     })
 
     describe('EJERCICIO 3: deepEqualArrays', function(){
-        xit('Debe hacer comparaciones superficiales', function(){
+        it('Debe hacer comparaciones superficiales', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2]
             )).to.be.true;
         })
-        xit('Debe comparar el tipo de cada elemento tambien', function(){
+        it('Debe comparar el tipo de cada elemento tambien', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 ['0','1','2']
             )).to.be.false;
         })
-        xit('Debe comparar todos los elementos de ambos arrays', function(){
+        it('Debe comparar todos los elementos de ambos arrays', function(){
             expect(deepEqualArrays(
                 [0,1,2],
                 [0,1,2,4]
             )).to.be.false;
         })
-        xit("Debe de hacer comparacion en 'profundidad'", function(){
+        it("Debe de hacer comparacion en 'profundidad'", function(){
             expect(deepEqualArrays(
                 [0,1,[[0,1,2],1,2]],
                 [0,1,[[0,1,2],1,2]]
@@ -209,14 +209,14 @@ describe('Practica del Checkpoint M1', function(){
         const BST = new BinarySearchTree(32)
         const arr = [8, 64, 5, 9];
         arr.forEach(e => BST.insert(e))
-        xit("Debe devolver un Array", function(){
+        it("Debe devolver un Array", function(){
             expect(BST.toArray() instanceof Array).to.be.true;
         })
-        xit("Debe devolver todos los elementos del arbol", function(){
+        it("Debe devolver todos los elementos del arbol", function(){
             expect(BST.toArray() instanceof Array).to.be.true;
             expect(BST.toArray().length).to.be.equal(5);
         })
-        xit("Debe devolver todos los elementos del arbol, en un array ordenado", function(){
+        it("Debe devolver todos los elementos del arbol, en un array ordenado", function(){
             expect(BST.toArray()).to.be.deep.equal([ 5, 8, 9, 32, 64 ]);
         })
     })

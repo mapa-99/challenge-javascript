@@ -81,7 +81,30 @@ function direcciones(laberinto, direccion) {}
 // deepEqualArrays([0,1,2], [0,1,2,3]) => false
 // deepEqualArrays([0,1,[[0,1,2],1,2]], [0,1,[[0,1,2],1,2]]) => true
 
-function deepEqualArrays(arr1, arr2) {}
+function deepEqualArrays(arr1, arr2) {
+  var arrsIguales;
+  //Caso en que los array tengan distinta longitud
+  if (arr1.length !== arr2.length) {
+    return false;
+  }
+  for (let i = 0; i < arr1.length; i++) {
+    if (Array.isArray(arr1[i]) && Array.isArray(arr2[i])) {
+      arrsIguales = deepEqualArrays(arr1[i], arr2[i]);
+      if (!arrsIguales) i = arr1.length;
+      //continue;
+    }
+    //De ser iguales mi booleano es true
+    if (arr1[i] === arr2[i]) {
+      arrsIguales = true;
+    }
+    //De ser distintos salgo del for
+    else {
+      arrsIguales = false;
+      i = arr1.length;
+    }
+  }
+  return arrsIguales;
+}
 
 // ----- LinkedList -----
 
@@ -244,6 +267,9 @@ function multiCallbacks(cbs1, cbs2) {}
 
 BinarySearchTree.prototype.toArray = function () {
   var arr = [];
+  function cb(val) {
+    arr.push(val);
+  }
   // método organizar in order
   this.depthFirstForEach(cb, "in-order");
   return arr;
