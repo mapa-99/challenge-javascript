@@ -233,7 +233,15 @@ OrderedLinkedList.prototype.removeHigher = function () {
 // > LL.removeHigher()
 // < null
 
-OrderedLinkedList.prototype.removeLower = function () {};
+OrderedLinkedList.prototype.removeLower = function () {
+  var actual = this.head;
+  if (!this.head) return null;
+  if (!actual.next) {
+    //Cuando la lista tiene un solo elemento
+    this.head = null;
+    return actual.value;
+  }
+};
 
 // ----- QUEUE -----
 
